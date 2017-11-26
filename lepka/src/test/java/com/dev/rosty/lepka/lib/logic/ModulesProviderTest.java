@@ -28,18 +28,19 @@ import static org.junit.Assert.*;
  */
 public class ModulesProviderTest {
 
-    private List<Module> modules = new ArrayList<>();
+    private List<Module>    modules = new ArrayList<>();
+    private ModulesProvider modulesProvider;
 
     @Before public void setUp() throws Exception {
 
         modules.add(new TestModule1());
         modules.add(new TestModule2());
         modules.add(new TestModule3());
+
+        modulesProvider = new ModulesProvider(modules);
     }
 
     @Test public void findControllerForScreen() throws Exception {
-
-        ModulesProvider modulesProvider = new ModulesProvider(modules);
 
         Module module1 = modulesProvider.findControllerForScreen(new TestScreen2());
         Module module2 = modulesProvider.findControllerForScreen(new TestScreen6());
@@ -58,8 +59,6 @@ public class ModulesProviderTest {
 
     @Test public void findControllerByActivity() throws Exception {
 
-        ModulesProvider modulesProvider = new ModulesProvider(modules);
-
         Module module1 = modulesProvider.findControllerByActivity(new TestActivity3());
         Module module2 = modulesProvider.findControllerByActivity(new TestActivity1());
         Module module3 = modulesProvider.findControllerByActivity(new TestActivity2());
@@ -70,8 +69,6 @@ public class ModulesProviderTest {
     }
 
     @Test public void findControllerForScreenPriority() throws Exception {
-
-        ModulesProvider modulesProvider = new ModulesProvider(modules);
 
         Module module = modulesProvider.findControllerForScreen(new TestScreen7());
 

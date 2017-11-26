@@ -16,11 +16,11 @@ final class DataHeap {
 
     private Map<String, List<DataEntry>> dataMap = new HashMap<>();
 
-    Data getData(String routerKey, String screenKey) {
+    Data getData(String moduleKey, String screenKey) {
 
-        if (dataMap.containsKey(routerKey)) {
+        if (dataMap.containsKey(moduleKey)) {
 
-            for (DataEntry entry : dataMap.get(routerKey)) {
+            for (DataEntry entry : dataMap.get(moduleKey)) {
 
                 if (entry.screenKey.equals(screenKey))
                     return entry.data;
@@ -30,14 +30,14 @@ final class DataHeap {
         return new DataEmpty();
     }
 
-    void addData(String routerKey, String screenKey, Data data) {
+    void addData(String moduleKey, String screenKey, Data data) {
 
         DataEntry entry = new DataEntry(screenKey, data);
         List<DataEntry> entries = new ArrayList<>();
 
-        if (dataMap.containsKey(routerKey)) {
+        if (dataMap.containsKey(moduleKey)) {
 
-            entries = dataMap.get(routerKey);
+            entries = dataMap.get(moduleKey);
 
             int index = entries.indexOf(entry);
 
@@ -48,13 +48,13 @@ final class DataHeap {
         } else {
 
             entries.add(entry);
-            dataMap.put(routerKey, entries);
+            dataMap.put(moduleKey, entries);
         }
     }
 
-    void clearData(String routerKey) {
+    void clearData(String moduleKey) {
 
-        dataMap.remove(routerKey);
+        dataMap.remove(moduleKey);
     }
 
     private class DataEntry {
