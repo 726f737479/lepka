@@ -21,7 +21,7 @@ import com.dev.rosty.lepka.lib.util.LifecycleCallbacks;
  * Created by rosty on 11/12/17.
  */
 
-public class LepkaImpl implements Lepka {
+public final class LepkaImpl implements Lepka {
 
     private final Executor        executor;
     private final BackStack       backStack;

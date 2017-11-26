@@ -12,7 +12,7 @@ import java.util.List;
  * Created by rosty on 11/23/17.
  */
 
-class ModulesProvider {
+final class ModulesProvider {
 
     private List<Module> appModules;
 

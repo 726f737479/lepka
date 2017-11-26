@@ -18,7 +18,7 @@ import java.util.List;
  * Created by rosty on 11/22/17.
  */
 
-public class LepkaBuilder {
+public final class LepkaBuilder {
 
     private List<Module> modules;
     private Screen       screen;
