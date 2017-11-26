@@ -1,8 +1,8 @@
 package com.dev.rosty.lepka.sample
 
 import com.dev.rosty.lepka.lib.Screen
-import com.dev.rosty.lepka.lib.router.BaseModule
-import com.dev.rosty.lepka.lib.router.Priority
+import com.dev.rosty.lepka.lib.module.BaseModule
+import com.dev.rosty.lepka.lib.module.Priority
 import com.dev.rosty.lepka.lib.screen.Data
 import com.dev.rosty.lepka.lib.screen.BaseScreen
 import com.dev.rosty.lepka.sample.presentation.modules.BotBarActivity

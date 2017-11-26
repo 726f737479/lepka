@@ -1,4 +1,4 @@
-package com.dev.rosty.lepka.lib.router;
+package com.dev.rosty.lepka.lib.module;
 
 import com.dev.rosty.lepka.lib.Module;
 import com.dev.rosty.lepka.lib.Screen;

@@ -4,7 +4,7 @@ import android.app.Activity;
 
 import com.dev.rosty.lepka.lib.Module;
 import com.dev.rosty.lepka.lib.Screen;
-import com.dev.rosty.lepka.lib.router.Priority;
+import com.dev.rosty.lepka.lib.module.Priority;
 
 import java.util.List;
 
