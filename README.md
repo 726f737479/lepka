@@ -1,5 +1,5 @@
 # Lepka
-Lepka is a lightweight library that provides super easy inteface for navigation in Android app.
+Lepka is a lightweight library that provides super easy interface for navigation within Android app.
 Best used with **MVP** or **MVVM** architecture.
 
 ## Setup 
@@ -104,7 +104,7 @@ val lepka = LepkaBuilder()
 Switching between screens has never been so easy :)
 
 ### Naviagation
-You just need to tell **Lipka** which command you want to execute, and it does everything itself. Available commands: `Forward(screen), Back()`, soon appear: `ForwardPop(screen), BackTo(screen)`
+You just need to tell **Lipka** which command you want to execute, and it does everything itself. Available commands: `Forward(screen), Back()` soon appear: `ForwardPop(screen), BackTo(screen)`
 ```kotlin
 lepka.execute(Forward(LoginScreen()))
 
