@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lepka</string>
+    <string name="text_bottom_navigation">Bottom Navigation</string>
+    <string name="text_list_navigation">List navigation</string>
+</resources>
