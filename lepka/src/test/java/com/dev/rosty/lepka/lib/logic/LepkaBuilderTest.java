@@ -1,6 +1,5 @@
 package com.dev.rosty.lepka.lib.logic;
 
-import android.app.Application;
 import android.test.mock.MockApplication;
 
 import com.dev.rosty.lepka.lib.Lepka;

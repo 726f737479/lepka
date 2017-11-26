@@ -74,8 +74,10 @@ public final class LepkaImpl implements Lepka {
 
         if (!module.canOpen(screen)) {
 
+            String moduleKey = KeysUtil.generateModuleKey(module);
+
             module = modulesProvider.findControllerForScreen(screen);
-            executor.openRouter(module, KeysUtil.generateModuleKey(module));
+            executor.openRouter(module, moduleKey);
 
         } else {
 

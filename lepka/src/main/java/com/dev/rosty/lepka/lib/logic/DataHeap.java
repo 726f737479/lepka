@@ -12,7 +12,7 @@ import java.util.Map;
  * Created by rosty on 11/25/17.
  */
 
-final class DataHeap {
+public final class DataHeap {
 
     private Map<String, List<DataEntry>> dataMap = new HashMap<>();
 
