@@ -2,6 +2,7 @@ package com.dev.rosty.lepka.lib.logic;
 
 import android.app.Activity;
 import android.app.Application;
+import android.support.annotation.VisibleForTesting;
 
 import com.dev.rosty.lepka.lib.Command;
 import com.dev.rosty.lepka.lib.Module;
@@ -23,14 +24,14 @@ import com.dev.rosty.lepka.lib.util.LifecycleCallbacks;
 
 public final class LepkaImpl implements Lepka {
 
-    private final Executor        executor;
-    private final BackStack       backStack;
-    private final ModulesProvider modulesProvider;
-    private final DataHeap        dataHeap;
+    @VisibleForTesting final Executor        executor;
+    @VisibleForTesting final BackStack       backStack;
+    @VisibleForTesting final ModulesProvider modulesProvider;
+    @VisibleForTesting final DataHeap        dataHeap;
 
-    private Module module;
-    private Screen screen;
-    private Screen entry;
+    @VisibleForTesting  Module module;
+    @VisibleForTesting  Screen screen;
+    @VisibleForTesting  Screen entry;
 
     private String moduleKey;
 

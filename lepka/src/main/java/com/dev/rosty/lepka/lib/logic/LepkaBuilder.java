@@ -1,6 +1,7 @@
 package com.dev.rosty.lepka.lib.logic;
 
 import android.app.Application;
+import android.support.annotation.VisibleForTesting;
 
 import com.dev.rosty.lepka.lib.Module;
 import com.dev.rosty.lepka.lib.Lepka;
@@ -20,11 +21,11 @@ import java.util.List;
 
 public final class LepkaBuilder {
 
-    private List<Module> modules;
-    private Screen       screen;
-    private Application  application;
+    @VisibleForTesting List<Module> modules;
+    @VisibleForTesting Screen       screen;
+    @VisibleForTesting Application  application;
 
-    private boolean useSupport;
+    @VisibleForTesting boolean useSupport;
 
     public LepkaBuilder registerModules(List<Module> modules) {
 
@@ -53,7 +54,7 @@ public final class LepkaBuilder {
     public Lepka build() {
 
         if (application == null) throw new RuntimeException("No application");
-        if (modules == null) throw new RuntimeException("No modules");
+        if (modules     == null) throw new RuntimeException("No modules");
         if (screen      == null) throw new RuntimeException("No entry screen");
 
         ModulesProvider modulesProvider = new ModulesProvider(modules);
