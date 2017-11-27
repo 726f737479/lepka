@@ -6,9 +6,6 @@ import android.app.FragmentManager.OnBackStackChangedListener;
 
 import java.lang.ref.WeakReference;
 
-/**
- * Created by rosty on 11/24/17.
- */
 
 public final class BackStackDefault implements BackStack {
 

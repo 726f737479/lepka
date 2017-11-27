@@ -5,9 +5,6 @@ import com.dev.rosty.lepka.lib.screen.Data
 import dagger.Module
 import dagger.Provides
 
-/**
- * Created by rosty on 11/24/17.
- */
 
 @Module class ScreenModule(@ScreenKey val key: String) {
 

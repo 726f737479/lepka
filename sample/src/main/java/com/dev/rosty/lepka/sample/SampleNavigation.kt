@@ -1,10 +1,10 @@
 package com.dev.rosty.lepka.sample
 
 import com.dev.rosty.lepka.lib.Screen
-import com.dev.rosty.lepka.lib.module.BaseModule
+import com.dev.rosty.lepka.lib.module.LepkaModule
 import com.dev.rosty.lepka.lib.module.Priority
 import com.dev.rosty.lepka.lib.screen.Data
-import com.dev.rosty.lepka.lib.screen.BaseScreen
+import com.dev.rosty.lepka.lib.screen.LepkaScreen
 import com.dev.rosty.lepka.sample.presentation.modules.BotBarActivity
 import com.dev.rosty.lepka.sample.presentation.modules.ListActivity
 import com.dev.rosty.lepka.sample.presentation.modules.SplashActivity
@@ -13,11 +13,8 @@ import com.dev.rosty.lepka.sample.presentation.screens.add.AddFragment
 import com.dev.rosty.navi.presentation.screens.purple.ListFragment
 import com.dev.rosty.lepka.sample.presentation.screens.picker.PickerFragment
 
-/**
- * Created by rosty on 11/22/17.
- */
 
-class SplashModule : BaseModule() {
+class SplashModule : LepkaModule() {
 
     override fun provideContainer() = R.id.container
 
@@ -26,7 +23,7 @@ class SplashModule : BaseModule() {
     override fun canOpen(screen: Screen) = screen is PickerScreen
 }
 
-class BotBarModule : BaseModule() {
+class BotBarModule : LepkaModule() {
 
     override fun provideContainer() = R.id.container
 
@@ -38,7 +35,7 @@ class BotBarModule : BaseModule() {
             = if (screen is AddScreen) Priority.MEDIUM else Priority.HIGH
 }
 
-class ListModule : BaseModule() {
+class ListModule : LepkaModule() {
 
     override fun provideContainer()= R.id.container
 
@@ -48,22 +45,10 @@ class ListModule : BaseModule() {
             = screen is ListScreen || screen is EmptyScreen
 }
 
-class ListScreen : BaseScreen() {
+object ListScreen : LepkaScreen(ListFragment::class.java)
 
-    override fun getFragmentClass() = ListFragment::class.java
-}
+class AddScreen(data: Data<Int>) : LepkaScreen(AddFragment::class.java, data)
 
-class AddScreen(data: Data<Int>) : BaseScreen(data) {
+object PickerScreen : LepkaScreen(PickerFragment::class.java)
 
-    override fun getFragmentClass() = AddFragment::class.java
-}
-
-class PickerScreen : BaseScreen() {
-
-    override fun getFragmentClass() = PickerFragment::class.java
-}
-
-class EmptyScreen(data: Data<String>) : BaseScreen(data) {
-
-    override fun getFragmentClass() = EmptyFragment::class.java
-}
+class EmptyScreen(data: Data<String>) : LepkaScreen(EmptyFragment::class.java, data)

@@ -8,9 +8,6 @@ import com.dev.rosty.lepka.lib.module.Priority;
 
 import java.util.List;
 
-/**
- * Created by rosty on 11/23/17.
- */
 
 final class ModulesProvider {
 

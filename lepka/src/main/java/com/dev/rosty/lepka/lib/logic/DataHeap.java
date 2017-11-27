@@ -8,11 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by rosty on 11/25/17.
- */
 
-public final class DataHeap {
+final class DataHeap {
 
     private Map<String, List<DataEntry>> dataMap = new HashMap<>();
 

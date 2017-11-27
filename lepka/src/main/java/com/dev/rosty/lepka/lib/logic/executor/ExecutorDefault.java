@@ -13,9 +13,6 @@ import com.dev.rosty.lepka.lib.util.KeysUtil;
 
 import java.lang.ref.WeakReference;
 
-/**
- * Created by rosty on 11/25/17.
- */
 
 public final class ExecutorDefault implements Executor {
 

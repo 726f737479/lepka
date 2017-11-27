@@ -7,9 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import java.lang.ref.WeakReference;
 
-/**
- * Created by rosty on 11/24/17.
- */
 
 public final class BackStackSupport implements BackStack {
 

@@ -7,9 +7,6 @@ import com.dev.rosty.lepka.sample.presentation.screens.list.ListViewModel
 import com.dev.rosty.lepka.sample.presentation.screens.picker.PickerViewModel
 import dagger.Component
 
-/**
- * Created by rosty on 11/24/17.
- */
 
 @ScreenScope
 @Component(dependencies = arrayOf(AppComponent::class), modules = arrayOf(ScreenModule::class))

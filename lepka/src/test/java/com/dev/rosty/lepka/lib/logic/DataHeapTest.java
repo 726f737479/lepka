@@ -19,9 +19,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by rosty on 11/26/17.
- */
+
 public class DataHeapTest {
 
     private final String KEY_MODULE_1 = KeysUtil.generateModuleKey(new TestModule1());

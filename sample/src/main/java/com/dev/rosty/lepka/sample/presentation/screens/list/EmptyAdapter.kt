@@ -8,9 +8,6 @@ import com.dev.rosty.lepka.sample.presentation.base.adapter.ItemAction
 import com.dev.rosty.lepka.sample.presentation.base.adapter.ItemViewHolder
 import com.dev.rosty.lepka.sample.presentation.base.adapter.ListAdapter
 
-/**
- * Created by rosty on 11/23/17.
- */
 
 class EmptyAdapter(data: ObservableList<String>, private val action: ItemAction<String>) : ListAdapter<String, ItemEmptyBinding>(data) {
 

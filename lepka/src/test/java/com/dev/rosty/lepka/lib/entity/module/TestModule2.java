@@ -5,14 +5,14 @@ import com.dev.rosty.lepka.lib.entity.activity.TestActivity2;
 import com.dev.rosty.lepka.lib.entity.screen.TestScreen3;
 import com.dev.rosty.lepka.lib.entity.screen.TestScreen4;
 import com.dev.rosty.lepka.lib.entity.screen.TestScreen7;
-import com.dev.rosty.lepka.lib.module.BaseModule;
+import com.dev.rosty.lepka.lib.module.LepkaModule;
 import com.dev.rosty.lepka.lib.module.Priority;
 
 /**
  * Created by rosty on 11/26/17.
  */
 
-public class TestModule2 extends BaseModule {
+public class TestModule2 extends LepkaModule {
 
     @Override public int provideContainer() {
         return 0;

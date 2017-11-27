@@ -1,6 +1,5 @@
 package com.dev.rosty.lepka.lib.command;
 
-
 import com.dev.rosty.lepka.lib.Command;
 
 
@@ -16,5 +15,4 @@ import com.dev.rosty.lepka.lib.Command;
  * of {@link android.app.Application} and current {@link com.dev.rosty.lepka.lib.Screen}
  * is last in a backstack of {@link com.dev.rosty.lepka.lib.Module} the application closes
  */
-public class Back implements Command {
-}
+public final class Back implements Command { }

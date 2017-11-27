@@ -9,7 +9,7 @@ import com.dev.rosty.lepka.sample.injection.app.AppComponent
 import com.dev.rosty.lepka.sample.injection.screen.DaggerScreenComponent
 import com.dev.rosty.lepka.sample.injection.screen.ScreenComponent
 import com.dev.rosty.lepka.sample.injection.screen.ScreenModule
-import com.dev.rosty.navi.SampleApp
+import com.dev.rosty.lepka.sample.SampleApp
 
 
 class VmFactory(private val application: Application,
@@ -27,7 +27,7 @@ class VmFactory(private val application: Application,
 
         if (viewModel is ScreenComponent.Injectable) {
 
-            var screenComponent = DaggerScreenComponent.builder()
+            val screenComponent = DaggerScreenComponent.builder()
                     .screenModule(ScreenModule(key))
                     .appComponent((application as SampleApp).appComponent)
                     .build()

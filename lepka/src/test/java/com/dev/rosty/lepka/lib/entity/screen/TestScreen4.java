@@ -1,15 +1,12 @@
 package com.dev.rosty.lepka.lib.entity.screen;
 
 import com.dev.rosty.lepka.lib.entity.fragment.TestFragment4;
-import com.dev.rosty.lepka.lib.screen.BaseScreen;
+import com.dev.rosty.lepka.lib.screen.LepkaScreen;
 
-/**
- * Created by rosty on 11/26/17.
- */
 
-public class TestScreen4 extends BaseScreen {
+public final class TestScreen4 extends LepkaScreen {
 
-    @Override public Class getFragmentClass() {
-        return TestFragment4.class;
+    public TestScreen4() {
+        super(TestFragment4.class);
     }
 }

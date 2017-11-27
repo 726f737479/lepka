@@ -1,4 +1,4 @@
-package com.dev.rosty.navi.presentation.screens
+package com.dev.rosty.lepka.sample.presentation.base
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
@@ -11,9 +11,6 @@ import android.view.ViewGroup
 import com.dev.rosty.lepka.lib.util.KeysUtil
 import com.dev.rosty.lepka.sample.injection.VmFactory
 
-/**
- * Created by rosty on 11/22/17.
- */
 
 abstract class ScreenFragment<VM : ViewModel,  B : ViewDataBinding> : Fragment() {
 
