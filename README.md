@@ -8,25 +8,22 @@ The principle of the library is built on the fact that the application has modul
 ### Screens definition 
 **Screen** is an abstraction that defines a specific logical part of the application. **Lepka** allows you to send additional data to the **Screens** that can then be extracted. Implementation base on **Fragments API**.
 ```kotlin
-class RegistrationScreen : BaseScreen() {
+object RegistrationScreen : LepkaScreen(RegistrationFragment::class.java)
 
-    override fun getFragmentClass() = RegistrationFragment::class.java
-}
+object LoginScreen : LepkaScreen(LoginFragment::class.java)
 
-class LoginScreen: BaseScreen() { ... }
+object FeedScreen : LepkaScreen(FeedFragment::class.java)
 
-class FeedScreen : BaseScreen() { ... }
+object MessagesScreen : MessagesScreen(FeedFragment::class.java)
 
-class ProfileScreen(data: Data<User>) : BaseScreen(data) { ... }
+class ProfileScreen(data: Data<User>) : LepkaScreen(ProfileFragment::class.java, data)
 
-class MessagesScreen : BaseScreen() { ... }
-
-class ChatScreen(data: Data<Int>) : BaseScreen(data) { ... }
+class ChatScreen(data: Data<Int>) : LepkaScreen(ChatFragment::class.java, data)
 ```
 ### Modules definition 
 The module is an entity that combines the logical all-encompassing parts of the application, in our case it's **Screens**. Based on the data that **Module**s provide, **Lepka** can decide whether to open a new activity or use current one to display the desired **Screen**.
 ```kotlin
-class AuthorizationModule : BaseModule() {
+class AuthorizationModule : LepkaModule() {
 
     override fun provideContainer() = R.id.container
 
@@ -36,7 +33,7 @@ class AuthorizationModule : BaseModule() {
             = screen is RegistrationScreen || screen is LoginScreen
 }
 
-class HomeModule : BaseModule() {
+class HomeModule : LepkaModule() {
 
     ...
 
@@ -44,7 +41,7 @@ class HomeModule : BaseModule() {
             = screen is FeedScreen || screen is ProfileScreen || screen is MessagesScreen
 }
 
-class ChatModule : BaseModule() {
+class ChatModule : LepkaModule() {
 
     ...
 
