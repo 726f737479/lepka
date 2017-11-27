@@ -37,11 +37,11 @@ public class LepkaImplTest {
 
     private final List<Module> modules = new ArrayList<>();
 
-    private ModulesProvider modulesProvider;
-    private DataHeap        dataHeap;
-    private Screen          entry;
+    private ModulesPool modulesPool;
+    private DataHeap dataHeap;
+    private Screen entry;
 
-    @Mock private Executor  executor;
+    @Mock private Executor executor;
     @Mock private BackStack backStack;
 
     private Lepka lepka;
@@ -52,14 +52,14 @@ public class LepkaImplTest {
         modules.add(new TestModule2());
         modules.add(new TestModule3());
 
-        modulesProvider = new ModulesProvider(modules);
-        dataHeap        = new DataHeap();
-        entry           = new TestScreen1();
+        modulesPool = new ModulesPool(modules);
+        dataHeap = new DataHeap();
+        entry = new TestScreen1();
 
         MockitoAnnotations.initMocks(this);
 
         lepka = new LepkaImpl(new MockApplication(),
-                new TestScreen1(), executor, modulesProvider, backStack, dataHeap);
+                new TestScreen1(), executor, modulesPool, backStack, dataHeap);
     }
 
     @Test public void executeBack() throws Exception {
@@ -83,7 +83,7 @@ public class LepkaImplTest {
 
     @Test public void executeForward() throws Exception {
 
-        Module module = modulesProvider.findControllerForScreen(entry);
+        Module module = modulesPool.findControllerForScreen(entry);
         Screen screen = new TestScreen2();
 
         lepka.execute(new Forward(screen));
@@ -94,7 +94,7 @@ public class LepkaImplTest {
                 anyString());
 
         screen = new TestScreen4();
-        module = modulesProvider.findControllerForScreen(screen);
+        module = modulesPool.findControllerForScreen(screen);
 
         lepka.execute(new Forward(screen));
 
@@ -102,7 +102,7 @@ public class LepkaImplTest {
                 any(module.getClass()),
                 anyString());
 
-        module = modulesProvider.findControllerForScreen(screen);
+        module = modulesPool.findControllerForScreen(screen);
         screen = new TestScreen3();
 
         lepka.execute(new Forward(screen));
@@ -113,7 +113,7 @@ public class LepkaImplTest {
                 anyString());
 
         screen = new TestScreen5();
-        module = modulesProvider.findControllerForScreen(screen);
+        module = modulesPool.findControllerForScreen(screen);
 
         lepka.execute(new Forward(screen));
 

@@ -9,11 +9,11 @@ import com.dev.rosty.lepka.lib.module.Priority;
 import java.util.List;
 
 
-final class ModulesProvider {
+final class ModulesPool {
 
     private List<Module> appModules;
 
-    ModulesProvider(List<Module> appModules) {
+    ModulesPool(List<Module> appModules) {
         this.appModules = appModules;
     }
 

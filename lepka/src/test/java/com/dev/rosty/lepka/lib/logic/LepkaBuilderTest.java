@@ -69,7 +69,7 @@ public class LepkaBuilderTest {
         assertTrue(lepkaImpl.executor  instanceof ExecutorSupport);
 
         assertNotNull(lepkaImpl.dataHeap);
-        assertNotNull(lepkaImpl.modulesProvider);
+        assertNotNull(lepkaImpl.modulesPool);
         assertNotNull(lepkaImpl.entry);
         assertNotNull(lepkaImpl.module);
 

@@ -18,24 +18,24 @@ import com.dev.rosty.lepka.lib.util.KeysUtil;
 import java.lang.ref.WeakReference;
 
 
-public final class ExecutorSupport implements Executor{
+public final class ExecutorSupport implements Executor {
 
     private WeakReference<FragmentManager> fragmentManager = new WeakReference<>(null);
-    private WeakReference<Activity>        activity        = new WeakReference<>(null);
+    private WeakReference<Activity> activity = new WeakReference<>(null);
 
     @Override public void setup(Activity activity) {
 
         FragmentManager fragmentManager = ((AppCompatActivity) activity)
                 .getSupportFragmentManager();
 
-        this.activity        = new WeakReference<>(activity);
+        this.activity = new WeakReference<>(activity);
         this.fragmentManager = new WeakReference<>(fragmentManager);
     }
 
     @Override public void openScreen(Module module, Screen screen, String key) {
 
-        Fragment fragment  = buildFragment(screen.getFragmentClass());
-        Bundle   arguments = new Bundle();
+        Fragment fragment = buildFragment(screen.getFragmentClass());
+        Bundle arguments = new Bundle();
 
         FragmentTransaction transaction = fillWithCustomParams(
                 fragmentManager.get().beginTransaction(), activity.get(), arguments);
@@ -73,7 +73,7 @@ public final class ExecutorSupport implements Executor{
 
         if (activity instanceof SharedElementManager) {
 
-            View   sharedElement  = ((SharedElementManager) activity).produceSharedElement();
+            View sharedElement = ((SharedElementManager) activity).produceSharedElement();
             String transitionName = ViewCompat.getTransitionName(sharedElement);
 
             transaction.addSharedElement(sharedElement, transitionName);

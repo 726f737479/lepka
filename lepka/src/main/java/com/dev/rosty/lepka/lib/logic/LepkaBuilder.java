@@ -3,8 +3,8 @@ package com.dev.rosty.lepka.lib.logic;
 import android.app.Application;
 import android.support.annotation.VisibleForTesting;
 
-import com.dev.rosty.lepka.lib.Module;
 import com.dev.rosty.lepka.lib.Lepka;
+import com.dev.rosty.lepka.lib.Module;
 import com.dev.rosty.lepka.lib.Screen;
 import com.dev.rosty.lepka.lib.logic.backstack.BackStack;
 import com.dev.rosty.lepka.lib.logic.backstack.BackStackDefault;
@@ -19,8 +19,8 @@ import java.util.List;
 public final class LepkaBuilder {
 
     @VisibleForTesting List<Module> modules;
-    @VisibleForTesting Screen       screen;
-    @VisibleForTesting Application  application;
+    @VisibleForTesting Screen screen;
+    @VisibleForTesting Application application;
 
     @VisibleForTesting boolean useSupport;
 
@@ -51,11 +51,11 @@ public final class LepkaBuilder {
     public Lepka build() {
 
         if (application == null) throw new RuntimeException("No application");
-        if (modules     == null) throw new RuntimeException("No modules");
-        if (screen      == null) throw new RuntimeException("No entry screen");
+        if (modules == null) throw new RuntimeException("No modules");
+        if (screen == null) throw new RuntimeException("No entry screen");
 
-        ModulesProvider modulesProvider = new ModulesProvider(modules);
-        DataHeap        dataHeap        = new DataHeap();
+        ModulesPool modulesPool = new ModulesPool(modules);
+        DataHeap dataHeap = new DataHeap();
 
         Executor executor = useSupport
                 ? new ExecutorSupport()
@@ -65,6 +65,6 @@ public final class LepkaBuilder {
                 ? new BackStackSupport()
                 : new BackStackDefault();
 
-        return new LepkaImpl(application, screen,  executor, modulesProvider, backStack, dataHeap);
+        return new LepkaImpl(application, screen, executor, modulesPool, backStack, dataHeap);
     }
 }

@@ -5,46 +5,46 @@ import android.app.Application;
 import android.support.annotation.VisibleForTesting;
 
 import com.dev.rosty.lepka.lib.Command;
-import com.dev.rosty.lepka.lib.Module;
 import com.dev.rosty.lepka.lib.Lepka;
+import com.dev.rosty.lepka.lib.Module;
 import com.dev.rosty.lepka.lib.Screen;
+import com.dev.rosty.lepka.lib.command.Back;
 import com.dev.rosty.lepka.lib.command.BackTo;
+import com.dev.rosty.lepka.lib.command.Forward;
 import com.dev.rosty.lepka.lib.command.ForwardPop;
 import com.dev.rosty.lepka.lib.logic.backstack.BackStack;
 import com.dev.rosty.lepka.lib.logic.executor.Executor;
 import com.dev.rosty.lepka.lib.screen.Data;
-import com.dev.rosty.lepka.lib.command.Back;
-import com.dev.rosty.lepka.lib.command.Forward;
 import com.dev.rosty.lepka.lib.util.KeysUtil;
 import com.dev.rosty.lepka.lib.util.LifecycleCallbacks;
 
 
 public final class LepkaImpl implements Lepka {
 
-    @VisibleForTesting final Executor        executor;
-    @VisibleForTesting final BackStack       backStack;
-    @VisibleForTesting final ModulesProvider modulesProvider;
-    @VisibleForTesting final DataHeap        dataHeap;
+    @VisibleForTesting final Executor executor;
+    @VisibleForTesting final BackStack backStack;
+    @VisibleForTesting final ModulesPool modulesPool;
+    @VisibleForTesting final DataHeap dataHeap;
 
-    @VisibleForTesting  Module module;
-    @VisibleForTesting  Screen screen;
-    @VisibleForTesting  Screen entry;
+    @VisibleForTesting Module module;
+    @VisibleForTesting Screen screen;
+    @VisibleForTesting Screen entry;
 
     private String moduleKey;
 
-    LepkaImpl(Application     application,
-              Screen          entry,
-              Executor        executor,
-              ModulesProvider modulesProvider,
-              BackStack       backStack,
-              DataHeap        dataHeap) {
+    LepkaImpl(Application application,
+              Screen entry,
+              Executor executor,
+              ModulesPool modulesPool,
+              BackStack backStack,
+              DataHeap dataHeap) {
 
-        this.executor        = executor;
-        this.backStack       = backStack;
-        this.modulesProvider = modulesProvider;
-        this.entry           = entry;
-        this.dataHeap        = dataHeap;
-        this.module          = modulesProvider.findControllerForScreen(entry);
+        this.executor = executor;
+        this.backStack = backStack;
+        this.modulesPool = modulesPool;
+        this.entry = entry;
+        this.dataHeap = dataHeap;
+        this.module = modulesPool.findControllerForScreen(entry);
 
         application.registerActivityLifecycleCallbacks(new LifecycleObserver());
     }
@@ -73,7 +73,7 @@ public final class LepkaImpl implements Lepka {
 
             String moduleKey = KeysUtil.generateModuleKey(module);
 
-            module = modulesProvider.findControllerForScreen(screen);
+            module = modulesPool.findControllerForScreen(screen);
             executor.openRouter(module, moduleKey);
 
         } else {
@@ -106,7 +106,7 @@ public final class LepkaImpl implements Lepka {
         @Override public void onActivityResumed(final Activity activity) {
             super.onActivityResumed(activity);
 
-            module    = modulesProvider.findControllerByActivity(activity);
+            module = modulesPool.findControllerByActivity(activity);
             moduleKey = KeysUtil.getModuleKey(activity);
 
             executor.setup(activity);
@@ -130,7 +130,8 @@ public final class LepkaImpl implements Lepka {
 
     private final class BackStackObserver implements BackStack.Observer {
 
-        @Override public void onChanged(int count) {
+        @Override
+        public void onChanged(int count) {
 
             if (count == 0) backCommand();
         }

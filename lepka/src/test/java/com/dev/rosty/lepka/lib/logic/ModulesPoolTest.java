@@ -21,13 +21,13 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 
-public class ModulesProviderTest {
+public class ModulesPoolTest {
 
-    private List<Module>    modules = new ArrayList<>();
-    private ModulesProvider modulesProvider;
+    private List<Module> modules = new ArrayList<>();
+    private ModulesPool modulesPool;
 
     @Before public void setUp() throws Exception {
 
@@ -35,17 +35,17 @@ public class ModulesProviderTest {
         modules.add(new TestModule2());
         modules.add(new TestModule3());
 
-        modulesProvider = new ModulesProvider(modules);
+        modulesPool = new ModulesPool(modules);
     }
 
     @Test public void findControllerForScreen() throws Exception {
 
-        Module module1 = modulesProvider.findControllerForScreen(new TestScreen2());
-        Module module2 = modulesProvider.findControllerForScreen(new TestScreen6());
-        Module module3 = modulesProvider.findControllerForScreen(new TestScreen4());
-        Module module4 = modulesProvider.findControllerForScreen(new TestScreen1());
-        Module module5 = modulesProvider.findControllerForScreen(new TestScreen5());
-        Module module6 = modulesProvider.findControllerForScreen(new TestScreen3());
+        Module module1 = modulesPool.findControllerForScreen(new TestScreen2());
+        Module module2 = modulesPool.findControllerForScreen(new TestScreen6());
+        Module module3 = modulesPool.findControllerForScreen(new TestScreen4());
+        Module module4 = modulesPool.findControllerForScreen(new TestScreen1());
+        Module module5 = modulesPool.findControllerForScreen(new TestScreen5());
+        Module module6 = modulesPool.findControllerForScreen(new TestScreen3());
 
         assertTrue(module1.getActivityClass().equals(TestActivity1.class));
         assertTrue(module2.getActivityClass().equals(TestActivity3.class));
@@ -57,9 +57,9 @@ public class ModulesProviderTest {
 
     @Test public void findControllerByActivity() throws Exception {
 
-        Module module1 = modulesProvider.findControllerByActivity(new TestActivity3());
-        Module module2 = modulesProvider.findControllerByActivity(new TestActivity1());
-        Module module3 = modulesProvider.findControllerByActivity(new TestActivity2());
+        Module module1 = modulesPool.findControllerByActivity(new TestActivity3());
+        Module module2 = modulesPool.findControllerByActivity(new TestActivity1());
+        Module module3 = modulesPool.findControllerByActivity(new TestActivity2());
 
         assertTrue(module1.getActivityClass().equals(TestActivity3.class));
         assertTrue(module2.getActivityClass().equals(TestActivity1.class));
@@ -68,7 +68,7 @@ public class ModulesProviderTest {
 
     @Test public void findControllerForScreenPriority() throws Exception {
 
-        Module module = modulesProvider.findControllerForScreen(new TestScreen7());
+        Module module = modulesPool.findControllerForScreen(new TestScreen7());
 
         assertTrue(module.getActivityClass().equals(TestActivity3.class));
     }

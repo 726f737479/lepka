@@ -57,12 +57,12 @@ final class DataHeap {
     private class DataEntry {
 
         private String screenKey;
-        private Data   data;
+        private Data data;
 
         private DataEntry(String screenKey, Data data) {
 
             this.screenKey = screenKey;
-            this.data      = data;
+            this.data = data;
         }
 
         @Override public boolean equals(Object o) {
