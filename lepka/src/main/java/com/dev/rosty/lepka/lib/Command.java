@@ -1,7 +1,7 @@
 package com.dev.rosty.lepka.lib;
 
 /**
- * Created by rosty on 11/22/17.
+ * Abstraction that unite all command susing which the user can navigate
+ * throw the {@link android.app.Application}
  */
-
 public interface Command {}

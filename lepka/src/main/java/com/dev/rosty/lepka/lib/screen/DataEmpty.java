@@ -2,9 +2,8 @@ package com.dev.rosty.lepka.lib.screen;
 
 
 /**
- * Created by rosty on 11/22/17.
+ * Base implementation of {@link Data}, that contains empty extra data
  */
-
 public class DataEmpty extends Data<Object> {
 
     public DataEmpty() {

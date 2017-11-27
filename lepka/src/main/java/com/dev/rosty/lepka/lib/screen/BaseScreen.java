@@ -4,9 +4,8 @@ package com.dev.rosty.lepka.lib.screen;
 import com.dev.rosty.lepka.lib.Screen;
 
 /**
- * Created by rosty on 11/12/17.
+ * Base implementation of {@link Screen}, sets default {@link Data}
  */
-
 public abstract class BaseScreen implements Screen {
 
     protected Data data;

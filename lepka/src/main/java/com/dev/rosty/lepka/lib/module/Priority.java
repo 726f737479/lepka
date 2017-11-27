@@ -10,9 +10,10 @@ import static com.dev.rosty.lepka.lib.module.Priority.LOW;
 import static com.dev.rosty.lepka.lib.module.Priority.MEDIUM;
 
 /**
- * Created by rosty on 11/25/17.
+ * Annotation that is used to group priorities, that is used
+ * in {@link com.dev.rosty.lepka.lib.Module} to resolved {@link com.dev.rosty.lepka.lib.Screen}
+ * collisions
  */
-
 @IntDef({ HIGH, MEDIUM, LOW })
 @Retention(RetentionPolicy.SOURCE)
 public @interface Priority {
