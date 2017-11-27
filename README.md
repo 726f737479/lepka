@@ -13,30 +13,15 @@ class RegistrationScreen : BaseScreen() {
     override fun getFragmentClass() = RegistrationFragment::class.java
 }
 
-class LoginScreen: BaseScreen() {
+class LoginScreen: BaseScreen() { ... }
 
-    override fun getFragmentClass() = LoginFragment::class.java
-}
+class FeedScreen : BaseScreen() { ... }
 
-class FeedScreen : BaseScreen() {
+class ProfileScreen(data: Data<User>) : BaseScreen(data) { ... }
 
-    override fun getFragmentClass() = FeedFragment::class.java
-}
+class MessagesScreen : BaseScreen() { ... }
 
-class ProfileScreen(data: Data<User>) : BaseScreen(data) {
-
-    override fun getFragmentClass() = ProfileFragment::class.java
-}
-
-class MessagesScreen : BaseScreen() {
-
-    override fun getFragmentClass() = MessagesFragment::class.java
-}
-
-class ChatScreen(data: Data<Int>) : BaseScreen(data) {
-
-    override fun getFragmentClass() = ChatFragment::class.java
-}
+class ChatScreen(data: Data<Int>) : BaseScreen(data) { ... }
 ```
 ### Modules definition 
 The module is an entity that combines the logical all-encompassing parts of the application, in our case it's **Screens**. Based on the data that **Module**s provide, **Lepka** can decide whether to open a new activity or use current one to display the desired **Screen**.
@@ -53,9 +38,7 @@ class AuthorizationModule : BaseModule() {
 
 class HomeModule : BaseModule() {
 
-    override fun provideContainer() = R.id.container
-
-    override fun getActivityClass() = HomeActivity::class.java
+    ...
 
     override fun canOpen(screen: Screen)
             = screen is FeedScreen || screen is ProfileScreen || screen is MessagesScreen
@@ -63,9 +46,7 @@ class HomeModule : BaseModule() {
 
 class ChatModule : BaseModule() {
 
-    override fun provideContainer()= R.id.container
-
-    override fun getActivityClass() = ChatActivity::class.java
+    ...
 
     override fun canOpen(screen: Screen)
             = screen is ChatScreen || screen is ProfileScreen
