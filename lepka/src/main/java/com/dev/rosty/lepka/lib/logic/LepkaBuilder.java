@@ -15,9 +15,6 @@ import com.dev.rosty.lepka.lib.logic.executor.ExecutorSupport;
 
 import java.util.List;
 
-/**
- * Created by rosty on 11/22/17.
- */
 
 public final class LepkaBuilder {
 

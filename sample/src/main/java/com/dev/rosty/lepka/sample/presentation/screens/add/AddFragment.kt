@@ -6,11 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.dev.rosty.lepka.sample.R
 import com.dev.rosty.lepka.sample.databinding.FragmentAddBinding
-import com.dev.rosty.navi.presentation.screens.ScreenFragment
+import com.dev.rosty.lepka.sample.presentation.base.ScreenFragment
 
-/**
- * Created by rosty on 11/22/17.
- */
 
 class AddFragment : ScreenFragment<AddViewModel, FragmentAddBinding>() {
 

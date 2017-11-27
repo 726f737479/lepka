@@ -4,6 +4,7 @@ import android.support.annotation.IdRes;
 
 import com.dev.rosty.lepka.lib.module.Priority;
 
+
 /**
  * Abstraction that group {@link Screen} based on some logical principle
  */

@@ -9,9 +9,6 @@ import com.dev.rosty.lepka.sample.ListScreen
 import com.dev.rosty.lepka.sample.injection.screen.ScreenComponent
 import javax.inject.Inject
 
-/**
- * Created by rosty on 11/22/17.
- */
 
 class PickerViewModel : ViewModel(), ScreenComponent.Injectable {
 
@@ -20,6 +17,6 @@ class PickerViewModel : ViewModel(), ScreenComponent.Injectable {
     override fun inject(screenComponent: ScreenComponent) = screenComponent.inject(this)
 
 
-    fun onListTap()   = lepka.execute(Forward(ListScreen()))
+    fun onListTap()   = lepka.execute(Forward(ListScreen))
     fun onBotBarTap() = lepka.execute(Forward(AddScreen(Data(0))))
 }

@@ -18,9 +18,6 @@ import com.dev.rosty.lepka.lib.command.Forward;
 import com.dev.rosty.lepka.lib.util.KeysUtil;
 import com.dev.rosty.lepka.lib.util.LifecycleCallbacks;
 
-/**
- * Created by rosty on 11/12/17.
- */
 
 public final class LepkaImpl implements Lepka {
 
@@ -54,13 +51,13 @@ public final class LepkaImpl implements Lepka {
 
     @Override public void execute(Command command) {
 
-        if (command instanceof Forward) forwardCommand(((Forward) command).getScreen());
+        if (command instanceof Forward) forwardCommand(((Forward) command).screen);
 
         if (command instanceof Back) backCommand();
 
-        if (command instanceof ForwardPop) forwardPopCommand(((ForwardPop) command).getScreen());
+        if (command instanceof ForwardPop) forwardPopCommand(((ForwardPop) command).screen);
 
-        if (command instanceof BackTo) backToCommand(((BackTo) command).getScreen());
+        if (command instanceof BackTo) backToCommand(((BackTo) command).screen);
     }
 
     @Override public Data produceScreenData(String screenKey) {

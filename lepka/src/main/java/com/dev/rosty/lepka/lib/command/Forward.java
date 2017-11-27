@@ -1,10 +1,10 @@
 package com.dev.rosty.lepka.lib.command;
 
-
 import android.support.annotation.NonNull;
 
 import com.dev.rosty.lepka.lib.Command;
 import com.dev.rosty.lepka.lib.Screen;
+
 
 /**
  * This is {@link Command} using which user can navigates
@@ -19,20 +19,11 @@ import com.dev.rosty.lepka.lib.Screen;
  * If no {@link com.dev.rosty.lepka.lib.Module} can open {@link Screen}
  * user will get {@link RuntimeException}
  */
-public class Forward implements Command {
+public final class Forward implements Command {
 
-    private Screen screen;
+    public final Screen screen;
 
     public Forward(@NonNull Screen screen) {
         this.screen = screen;
-    }
-
-    /**
-     * Return {@link Screen} that should be opened, used by library
-     *
-     * @return {@link Screen} that should be opened
-     */
-    public Screen getScreen() {
-        return screen;
     }
 }

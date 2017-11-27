@@ -1,15 +1,15 @@
 package com.dev.rosty.lepka.sample.injection.app
 
-
 import com.dev.rosty.lepka.lib.Lepka
 import com.dev.rosty.lepka.sample.presentation.modules.BotBarActivity
 import com.dev.rosty.lepka.sample.presentation.modules.ListActivity
 import com.dev.rosty.lepka.sample.presentation.modules.SplashActivity
-import com.dev.rosty.navi.SampleApp
+import com.dev.rosty.lepka.sample.SampleApp
 
 import javax.inject.Singleton
 
 import dagger.Component
+
 
 @Singleton
 @Component(modules = arrayOf(AppModule::class))

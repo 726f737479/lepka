@@ -1,5 +1,6 @@
 package com.dev.rosty.lepka.lib.screen;
 
+
 /**
  * Entity that hold generic extra data that can be pass via {@link com.dev.rosty.lepka.lib.Screen}
  * can be retrieved when screen is opened

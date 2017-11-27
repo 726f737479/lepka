@@ -9,7 +9,7 @@ import com.dev.rosty.lepka.sample.databinding.FragmentListBinding
 import com.dev.rosty.lepka.sample.presentation.base.adapter.ItemAction
 import com.dev.rosty.lepka.sample.presentation.screens.list.EmptyAdapter
 import com.dev.rosty.lepka.sample.presentation.screens.list.ListViewModel
-import com.dev.rosty.navi.presentation.screens.ScreenFragment
+import com.dev.rosty.lepka.sample.presentation.base.ScreenFragment
 
 /**
  * Created by rosty on 11/22/17.

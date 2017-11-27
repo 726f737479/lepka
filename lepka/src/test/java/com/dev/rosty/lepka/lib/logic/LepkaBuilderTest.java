@@ -19,9 +19,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by rosty on 11/26/17.
- */
+
 public class LepkaBuilderTest {
 
     private final List<Module> modules = new ArrayList<>();

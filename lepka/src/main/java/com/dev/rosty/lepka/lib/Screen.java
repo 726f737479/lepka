@@ -2,6 +2,7 @@ package com.dev.rosty.lepka.lib;
 
 import com.dev.rosty.lepka.lib.screen.Data;
 
+
 /**
  * Abstraction that represent specific logical part of the application.
  * Implementation based on Fragments API.

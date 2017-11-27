@@ -1,4 +1,4 @@
-package com.dev.rosty.navi
+package com.dev.rosty.lepka.sample
 
 import android.app.Application
 import com.dev.rosty.lepka.lib.Lepka
@@ -7,9 +7,6 @@ import com.dev.rosty.lepka.sample.injection.app.AppModule
 import com.dev.rosty.lepka.sample.injection.app.DaggerAppComponent
 import javax.inject.Inject
 
-/**
- * Created by rosty on 11/19/17.
- */
 
 class SampleApp : Application() {
 

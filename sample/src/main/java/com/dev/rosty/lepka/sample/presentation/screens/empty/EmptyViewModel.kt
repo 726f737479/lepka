@@ -9,10 +9,6 @@ import com.dev.rosty.lepka.sample.injection.screen.ScreenComponent
 import javax.inject.Inject
 
 
-/**
- * Created by rosty on 11/22/17.
- */
-
 class EmptyViewModel : ViewModel(), ScreenComponent.Injectable {
 
     @Inject lateinit var data: Data<String>

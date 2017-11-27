@@ -1,16 +1,14 @@
 package com.dev.rosty.lepka.sample.injection.app
 
-
 import com.dev.rosty.lepka.lib.Lepka
 import com.dev.rosty.lepka.lib.logic.LepkaBuilder
 import com.dev.rosty.lepka.sample.*
-import com.dev.rosty.navi.SampleApp
+import com.dev.rosty.lepka.sample.SampleApp
 import dagger.Module
 
 import javax.inject.Singleton
 
 import dagger.Provides
-import java.util.*
 
 
 @Module
@@ -20,17 +18,18 @@ class AppModule(val app: SampleApp) {
     @Provides
     fun provideLepka(): Lepka {
 
-        val modules = Arrays.asList<com.dev.rosty.lepka.lib.Module>(
+        val modules = listOf(
 
                 SplashModule(),
                 BotBarModule(),
-                ListModule())
+                ListModule()
+        )
 
         return LepkaBuilder()
                 .setApplication(app)
                 .setUseSupport(true)
                 .registerModules(modules)
-                .setEntryScreen(PickerScreen())
+                .setEntryScreen(PickerScreen)
                 .build()
     }
 }
