@@ -1,4 +1,4 @@
-<img width=400 src="https://github.com/rostdev/lepka/blob/master/graphics/img_lepka_logo.png" />
+<img width=400 src="https://github.com/rostdev/lepka/blob/master/graphics/img_lepka_logo.jpg" />
 
 **Lepka** is a lightweight library that provides super easy interface for navigation within Android app.
 Best used with **MVP** or **MVVM** architecture.
