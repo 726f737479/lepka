@@ -14,8 +14,6 @@ import com.dev.rosty.lepka.lib.command.Forward;
 import com.dev.rosty.lepka.lib.command.ForwardClear;
 import com.dev.rosty.lepka.lib.logic.backstack.BackStack;
 import com.dev.rosty.lepka.lib.logic.executor.Executor;
-import com.dev.rosty.lepka.lib.screen.Data;
-import com.dev.rosty.lepka.lib.util.KeysUtil;
 import com.dev.rosty.lepka.lib.util.LifecycleCallbacks;
 
 
@@ -24,27 +22,22 @@ public final class LepkaImpl implements Lepka {
     @VisibleForTesting final Executor executor;
     @VisibleForTesting final BackStack backStack;
     @VisibleForTesting final ModulesPool modulesPool;
-    @VisibleForTesting final DataHeap dataHeap;
 
     @VisibleForTesting Module module;
     @VisibleForTesting Screen forward;
     @VisibleForTesting Screen entry;
     @VisibleForTesting Screen backTo;
 
-    private String moduleKey;
-
     LepkaImpl(Application application,
               Screen entry,
               Executor executor,
               ModulesPool modulesPool,
-              BackStack backStack,
-              DataHeap dataHeap) {
+              BackStack backStack) {
 
         this.executor = executor;
         this.backStack = backStack;
         this.modulesPool = modulesPool;
         this.entry = entry;
-        this.dataHeap = dataHeap;
         this.module = modulesPool.findControllerForScreen(entry);
 
         application.registerActivityLifecycleCallbacks(new LifecycleObserver());
@@ -61,11 +54,6 @@ public final class LepkaImpl implements Lepka {
         if (command instanceof BackTo) backToCommand(((BackTo) command).screen);
     }
 
-    @Override public Data produceScreenData(String screenKey) {
-
-        return dataHeap.getData(moduleKey, screenKey);
-    }
-
     private void forwardCommand(Screen screen, boolean clear) {
 
         this.forward = screen;
@@ -75,17 +63,10 @@ public final class LepkaImpl implements Lepka {
         if (!module.canOpen(screen)) {
 
             module = modulesPool.findControllerForScreen(screen);
-            String moduleKey = KeysUtil.generateModuleKey(module);
 
-            executor.openRouter(module, moduleKey, clear);
+            executor.openRouter(module, clear);
 
-        } else {
-
-            String screenKey = KeysUtil.generateScreenKey(screen);
-
-            executor.openScreen(module, screen, screenKey, clear);
-            dataHeap.addData(moduleKey, screenKey, screen.getData());
-        }
+        } else executor.openScreen(module, screen, clear);
 
         if (clear) backStack.registerForChanges(new BackStackObserver());
     }
@@ -109,7 +90,6 @@ public final class LepkaImpl implements Lepka {
             super.onActivityResumed(activity);
 
             module = modulesPool.findControllerByActivity(activity);
-            moduleKey = KeysUtil.getModuleKey(activity);
 
             executor.setup(activity);
             backStack.setup(activity);
@@ -127,7 +107,6 @@ public final class LepkaImpl implements Lepka {
                 if (backStack.isEmpty()) forward = null;
 
                 backStack.unregisterForChanges();
-                dataHeap.clearData(KeysUtil.getModuleKey(activity));
             }
         }
     }

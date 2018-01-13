@@ -3,7 +3,6 @@ package com.dev.rosty.lepka.sample.presentation.screens.list
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableArrayList
 import com.dev.rosty.lepka.lib.Lepka
-import com.dev.rosty.lepka.lib.screen.Data
 import com.dev.rosty.lepka.lib.command.Forward
 import com.dev.rosty.lepka.sample.EmptyScreen
 import com.dev.rosty.lepka.sample.injection.screen.ScreenComponent
@@ -12,7 +11,6 @@ import javax.inject.Inject
 
 class ListViewModel : ViewModel(), ScreenComponent.Injectable {
 
-    @Inject lateinit var data:  Data<String>
     @Inject lateinit var lepka: Lepka
 
     var empties = ObservableArrayList<String>()
@@ -26,5 +24,5 @@ class ListViewModel : ViewModel(), ScreenComponent.Injectable {
     }
 
 
-    fun onEmptySelected(name: String) = lepka.execute(Forward(EmptyScreen(Data(name))))
+    fun onEmptySelected(name: String) = lepka.execute(Forward(EmptyScreen(name)))
 }

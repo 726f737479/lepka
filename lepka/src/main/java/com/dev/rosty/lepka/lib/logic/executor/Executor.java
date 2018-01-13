@@ -10,8 +10,8 @@ public interface Executor {
 
     void setup(Activity activity);
 
-    void openScreen(Module module, Screen screen, String key, boolean clear);
-    void openRouter(Module module, String key, boolean clear);
+    void openScreen(Module module, Screen screen, boolean clear);
+    void openRouter(Module module, boolean clear);
 
     void closeScreen();
     void closeRouter();

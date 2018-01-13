@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@{viewModel.text}"
+            android:text="@{viewModel.countFuild}"
             android:onClick="@{v -> viewModel.onAddTap()}"
             style="@style/TextAppearance.AppCompat.Display4"
             android:gravity="center"

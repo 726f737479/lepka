@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dev.rosty.lepka.lib.util.KeysUtil
 import com.dev.rosty.lepka.sample.injection.VmFactory
 
 
@@ -23,7 +22,7 @@ abstract class ScreenFragment<VM : ViewModel,  B : ViewDataBinding> : Fragment()
         super.onCreate(savedInstanceState)
 
         viewModel = ViewModelProviders
-                .of(this, VmFactory(this, KeysUtil.getScreenKey(arguments)))
+                .of(this, VmFactory(this))
                 .get(getViewModelClass())
     }
 
@@ -39,7 +38,7 @@ abstract class ScreenFragment<VM : ViewModel,  B : ViewDataBinding> : Fragment()
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        isFirstCreate = true
+        isFirstCreate = false
     }
 
     protected abstract fun getViewModelClass(): Class<VM>

@@ -39,7 +39,6 @@ public class LepkaImplTest {
     private final List<Module> modules = new ArrayList<>();
 
     private ModulesPool modulesPool;
-    private DataHeap dataHeap;
     private Screen entry;
 
     @Mock private Executor executor;
@@ -54,13 +53,12 @@ public class LepkaImplTest {
         modules.add(new TestModule3());
 
         modulesPool = new ModulesPool(modules);
-        dataHeap = new DataHeap();
         entry = new TestScreen1();
 
         MockitoAnnotations.initMocks(this);
 
         lepka = new LepkaImpl(new MockApplication(),
-                new TestScreen1(), executor, modulesPool, backStack, dataHeap);
+                new TestScreen1(), executor, modulesPool, backStack);
     }
 
     @Test public void executeBack() throws Exception {
@@ -92,7 +90,6 @@ public class LepkaImplTest {
         verify(executor, new Times(1)).openScreen(
                 any(module.getClass()),
                 any(screen.getClass()),
-                anyString(),
                 anyBoolean());
 
         screen = new TestScreen4();
@@ -102,7 +99,6 @@ public class LepkaImplTest {
 
         verify(executor, new Times(1)).openRouter(
                 any(module.getClass()),
-                anyString(),
                 anyBoolean());
 
         module = modulesPool.findControllerForScreen(screen);
@@ -113,7 +109,6 @@ public class LepkaImplTest {
         verify(executor, new Times(1)).openScreen(
                 any(module.getClass()),
                 any(screen.getClass()),
-                anyString(),
                 anyBoolean());
 
         screen = new TestScreen5();
@@ -123,7 +118,6 @@ public class LepkaImplTest {
 
         verify(executor, new Times(1)).openRouter(
                 any(module.getClass()),
-                anyString(),
                 anyBoolean());
     }
 

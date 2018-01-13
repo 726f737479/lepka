@@ -1,21 +1,23 @@
 package com.dev.rosty.lepka.lib.screen;
 
+import android.os.Bundle;
+
 import com.dev.rosty.lepka.lib.Screen;
 
 
 /**
- * Base implementation of {@link Screen}, sets default {@link Data}
+ * Base implementation of {@link Screen}, sets an empty {@link Bundle} by default
  */
 public class LepkaScreen implements Screen {
 
     private final Class clazz;
-    private final Data data;
+    private final Bundle data;
 
     public LepkaScreen(Class clazz) {
-        this(clazz, new DataEmpty());
+        this(clazz, new Bundle());
     }
 
-    public LepkaScreen(Class clazz, Data data) {
+    public LepkaScreen(Class clazz, Bundle data) {
         this.clazz = clazz;
         this.data = data;
     }
@@ -24,7 +26,7 @@ public class LepkaScreen implements Screen {
         return clazz;
     }
 
-    @Override public Data getData() {
+    @Override public Bundle getData() {
         return data;
     }
 }

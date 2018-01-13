@@ -1,7 +1,7 @@
 package com.dev.rosty.lepka.lib;
 
-import com.dev.rosty.lepka.lib.screen.Data;
 
+import android.os.Bundle;
 
 /**
  * Abstraction that represent specific logical part of the application.
@@ -24,5 +24,5 @@ public interface Screen {
      *
      * @return extra data that user pass to {@link Screen}
      */
-    Data getData();
+    Bundle getData();
 }

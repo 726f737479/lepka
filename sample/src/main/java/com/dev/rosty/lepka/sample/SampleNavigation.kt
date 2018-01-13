@@ -3,7 +3,6 @@ package com.dev.rosty.lepka.sample
 import com.dev.rosty.lepka.lib.Screen
 import com.dev.rosty.lepka.lib.module.LepkaModule
 import com.dev.rosty.lepka.lib.module.Priority
-import com.dev.rosty.lepka.lib.screen.Data
 import com.dev.rosty.lepka.lib.screen.LepkaScreen
 import com.dev.rosty.lepka.sample.presentation.modules.BotBarActivity
 import com.dev.rosty.lepka.sample.presentation.modules.ListActivity
@@ -47,8 +46,17 @@ class ListModule : LepkaModule() {
 
 object ListScreen : LepkaScreen(ListFragment::class.java)
 
-class AddScreen(data: Data<Int>) : LepkaScreen(AddFragment::class.java, data)
-
 object PickerScreen : LepkaScreen(PickerFragment::class.java)
 
-class EmptyScreen(data: Data<String>) : LepkaScreen(EmptyFragment::class.java, data)
+class AddScreen(count: Int) : LepkaScreen(AddFragment::class.java) {
+
+    init { data.putInt(EXTRA_COUNT, count) }
+}
+
+class EmptyScreen(title: String) : LepkaScreen(EmptyFragment::class.java) {
+
+    init { data.putString(EXTRA_TITLE, title) }
+}
+
+const val EXTRA_COUNT = "extra_count"
+const val EXTRA_TITLE = "extra_title"

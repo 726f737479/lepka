@@ -55,7 +55,6 @@ public final class LepkaBuilder {
         if (screen == null) throw new RuntimeException("No entry forward");
 
         ModulesPool modulesPool = new ModulesPool(modules);
-        DataHeap dataHeap = new DataHeap();
 
         Executor executor = useSupport
                 ? new ExecutorSupport()
@@ -65,6 +64,6 @@ public final class LepkaBuilder {
                 ? new BackStackSupport()
                 : new BackStackDefault();
 
-        return new LepkaImpl(application, screen, executor, modulesPool, backStack, dataHeap);
+        return new LepkaImpl(application, screen, executor, modulesPool, backStack);
     }
 }
