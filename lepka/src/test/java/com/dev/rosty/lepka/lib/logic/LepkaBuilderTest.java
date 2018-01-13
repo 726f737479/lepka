@@ -73,6 +73,6 @@ public class LepkaBuilderTest {
         assertNotNull(lepkaImpl.entry);
         assertNotNull(lepkaImpl.module);
 
-        assertNull(lepkaImpl.screen);
+        assertNull(lepkaImpl.forward);
     }
 }

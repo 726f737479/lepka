@@ -27,8 +27,9 @@ public final class LepkaImpl implements Lepka {
     @VisibleForTesting final DataHeap dataHeap;
 
     @VisibleForTesting Module module;
-    @VisibleForTesting Screen screen;
+    @VisibleForTesting Screen forward;
     @VisibleForTesting Screen entry;
+    @VisibleForTesting Screen backTo;
 
     private String moduleKey;
 
@@ -67,7 +68,7 @@ public final class LepkaImpl implements Lepka {
 
     private void forwardCommand(Screen screen, boolean clear) {
 
-        this.screen = screen;
+        this.forward = screen;
 
         if (clear) backStack.unregisterForChanges();
 
@@ -99,6 +100,7 @@ public final class LepkaImpl implements Lepka {
 
     private void backToCommand(Screen screen) {
 
+        backTo = executor.popScreensTo(screen) ? null : screen;
     }
 
     private final class LifecycleObserver extends LifecycleCallbacks {
@@ -113,7 +115,8 @@ public final class LepkaImpl implements Lepka {
             backStack.setup(activity);
             backStack.registerForChanges(new BackStackObserver());
 
-            if (backStack.isEmpty()) forwardCommand(screen == null ? entry : screen, false);
+            if (backStack.isEmpty()) forwardCommand(forward == null ? entry : forward, false);
+            else if (backTo != null) backToCommand(backTo);
         }
 
         @Override public void onActivityPaused(Activity activity) {
@@ -121,7 +124,7 @@ public final class LepkaImpl implements Lepka {
 
             if (activity.isFinishing()) {
 
-                if (backStack.isEmpty()) screen = null;
+                if (backStack.isEmpty()) forward = null;
 
                 backStack.unregisterForChanges();
                 dataHeap.clearData(KeysUtil.getModuleKey(activity));

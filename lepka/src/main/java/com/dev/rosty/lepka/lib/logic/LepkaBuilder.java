@@ -52,7 +52,7 @@ public final class LepkaBuilder {
 
         if (application == null) throw new RuntimeException("No application");
         if (modules == null) throw new RuntimeException("No modules");
-        if (screen == null) throw new RuntimeException("No entry screen");
+        if (screen == null) throw new RuntimeException("No entry forward");
 
         ModulesPool modulesPool = new ModulesPool(modules);
         DataHeap dataHeap = new DataHeap();

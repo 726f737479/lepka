@@ -69,6 +69,23 @@ public final class ExecutorSupport implements Executor {
         activity.get().finish();
     }
 
+    @Override public boolean popScreensTo(Screen screen) {
+
+        int count = fragmentManager.get().getBackStackEntryCount();
+
+        for (int i = count; i > 0; i--) {
+
+            String name = fragmentManager.get().getBackStackEntryAt(i - 1).getName();
+
+            if (name.equals(screen.getFragmentClass().getSimpleName()))
+                return true;
+
+            fragmentManager.get().popBackStack();
+        }
+
+        return false;
+    }
+
     private Fragment buildFragment(Class fragmentClass) {
         return Fragment.instantiate(activity.get(), fragmentClass.getName());
     }

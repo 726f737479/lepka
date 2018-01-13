@@ -15,4 +15,6 @@ public interface Executor {
 
     void closeScreen();
     void closeRouter();
+
+    boolean popScreensTo(Screen screen);
 }

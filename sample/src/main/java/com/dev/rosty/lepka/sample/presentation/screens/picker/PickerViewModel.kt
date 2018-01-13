@@ -18,6 +18,6 @@ class PickerViewModel : ViewModel(), ScreenComponent.Injectable {
     override fun inject(screenComponent: ScreenComponent) = screenComponent.inject(this)
 
 
-    fun onListTap()   = lepka.execute(ForwardClear(ListScreen))
-    fun onBotBarTap() = lepka.execute(Forward(AddScreen(Data(0))))
+    fun onListTap()   = lepka.execute(Forward(ListScreen))
+    fun onBotBarTap() = lepka.execute(ForwardClear(AddScreen(Data(0))))
 }
