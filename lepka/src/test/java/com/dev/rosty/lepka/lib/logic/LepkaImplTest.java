@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -91,7 +92,8 @@ public class LepkaImplTest {
         verify(executor, new Times(1)).openScreen(
                 any(module.getClass()),
                 any(screen.getClass()),
-                anyString());
+                anyString(),
+                anyBoolean());
 
         screen = new TestScreen4();
         module = modulesPool.findControllerForScreen(screen);
@@ -100,7 +102,8 @@ public class LepkaImplTest {
 
         verify(executor, new Times(1)).openRouter(
                 any(module.getClass()),
-                anyString());
+                anyString(),
+                anyBoolean());
 
         module = modulesPool.findControllerForScreen(screen);
         screen = new TestScreen3();
@@ -110,7 +113,8 @@ public class LepkaImplTest {
         verify(executor, new Times(1)).openScreen(
                 any(module.getClass()),
                 any(screen.getClass()),
-                anyString());
+                anyString(),
+                anyBoolean());
 
         screen = new TestScreen5();
         module = modulesPool.findControllerForScreen(screen);
@@ -119,7 +123,8 @@ public class LepkaImplTest {
 
         verify(executor, new Times(1)).openRouter(
                 any(module.getClass()),
-                anyString());
+                anyString(),
+                anyBoolean());
     }
 
     @Test public void executeBackTo() throws Exception {

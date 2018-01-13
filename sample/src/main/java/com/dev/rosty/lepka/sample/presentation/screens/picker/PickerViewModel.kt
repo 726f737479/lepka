@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import com.dev.rosty.lepka.lib.Lepka
 import com.dev.rosty.lepka.lib.screen.Data
 import com.dev.rosty.lepka.lib.command.Forward
+import com.dev.rosty.lepka.lib.command.ForwardClear
 import com.dev.rosty.lepka.sample.AddScreen
 import com.dev.rosty.lepka.sample.ListScreen
 import com.dev.rosty.lepka.sample.injection.screen.ScreenComponent
@@ -17,6 +18,6 @@ class PickerViewModel : ViewModel(), ScreenComponent.Injectable {
     override fun inject(screenComponent: ScreenComponent) = screenComponent.inject(this)
 
 
-    fun onListTap()   = lepka.execute(Forward(ListScreen))
+    fun onListTap()   = lepka.execute(ForwardClear(ListScreen))
     fun onBotBarTap() = lepka.execute(Forward(AddScreen(Data(0))))
 }

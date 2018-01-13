@@ -13,7 +13,6 @@ public class KeysUtil {
 
     public static final String EXTRA_SCREEN_KEY = "screen_key";
     public static final String EXTRA_MODULE_KEY = "module_key";
-    public static final String EXTRA_VIEW_KEY   = "view_key";
 
     /**
      * Retrieve a key for {@link Module}
@@ -40,19 +39,6 @@ public class KeysUtil {
     public static String getScreenKey(Bundle arguments) {
 
         return arguments.getString(EXTRA_SCREEN_KEY);
-    }
-
-    /**
-     * Retrieve a key for shared element {@link android.view.View}
-     *
-     * @param arguments from {@link android.app.Fragment} or {@link android.support.v4.app.Fragment}
-     *                  that associated with {@link Screen}
-     *
-     * @return key for {@link android.view.View}
-     */
-    public static String getViewKey(Bundle arguments) {
-
-        return arguments.getString(EXTRA_VIEW_KEY);
     }
 
     /**

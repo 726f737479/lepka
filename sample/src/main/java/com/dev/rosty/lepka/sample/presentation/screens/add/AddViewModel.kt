@@ -5,6 +5,7 @@ import android.databinding.ObservableField
 import com.dev.rosty.lepka.lib.Lepka
 import com.dev.rosty.lepka.lib.screen.Data
 import com.dev.rosty.lepka.lib.command.Forward
+import com.dev.rosty.lepka.lib.command.ForwardClear
 import com.dev.rosty.lepka.sample.AddScreen
 import com.dev.rosty.lepka.sample.injection.screen.ScreenComponent
 import javax.inject.Inject
@@ -26,5 +27,10 @@ class AddViewModel : ViewModel(), ScreenComponent.Injectable {
     }
 
 
-    fun onAddTap() = lepka.execute(Forward(AddScreen(Data(data.get() + 1))))
+    fun onAddTap() {
+
+        lepka.execute(
+                if (data.get() < 5) Forward(AddScreen(Data(data.get() + 1)))
+                else ForwardClear(AddScreen(Data(0))))
+    }
 }
