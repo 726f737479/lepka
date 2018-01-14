@@ -27,7 +27,6 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         (application as SampleApp).appComponent.inject(this)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
-        binding.bottomNavigation.setOnNavigationItemSelectedListener(this)
     }
 
     override fun onResume() {
@@ -39,6 +38,14 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             is MessagesFragment -> binding.bottomNavigation.setSelectedItemId(R.id.action_messages)
             is AccountFragment -> binding.bottomNavigation.setSelectedItemId (R.id.action_account)
         }
+
+        binding.bottomNavigation.setOnNavigationItemSelectedListener(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        binding.bottomNavigation.setOnNavigationItemSelectedListener(null)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

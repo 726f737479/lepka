@@ -1,4 +1,4 @@
-package com.dev.rosty.lepka.sample.presentation.screens.authorization
+package com.dev.rosty.lepka.sample.presentation.screens.login
 
 import android.arch.lifecycle.ViewModel
 import com.dev.rosty.lepka.lib.Lepka
@@ -9,7 +9,7 @@ import com.dev.rosty.lepka.sample.injection.screen.ScreenComponent
 import javax.inject.Inject
 
 
-class AuthorizationViewModel : ViewModel(), ScreenComponent.Injectable {
+class LoginViewModel : ViewModel(), ScreenComponent.Injectable {
 
     @Inject lateinit var lepka: Lepka
 
@@ -19,5 +19,4 @@ class AuthorizationViewModel : ViewModel(), ScreenComponent.Injectable {
 
 
     fun onLoginClick() = lepka.execute(ForwardClear(NewsScreen))
-    fun onRegisterClick() = lepka.execute(ForwardClear(AccountScreen))
 }

@@ -16,7 +16,7 @@ abstract class ScreenFragment<VM : ViewModel,  B : ViewDataBinding> : Fragment()
     protected lateinit var viewModel: VM
     protected lateinit var binding:   B
 
-    protected var isFirstCreate: Boolean = true
+    private var isFirstCreate: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

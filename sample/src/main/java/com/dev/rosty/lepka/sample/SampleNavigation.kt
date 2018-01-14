@@ -8,7 +8,7 @@ import com.dev.rosty.lepka.sample.presentation.modules.ChatActivity
 import com.dev.rosty.lepka.sample.presentation.modules.AuthorizationActivity
 import com.dev.rosty.lepka.sample.presentation.screens.chat.ChatFragment
 import com.dev.rosty.lepka.sample.presentation.screens.account.AccountFragment
-import com.dev.rosty.lepka.sample.presentation.screens.authorization.AuthorizationFragment
+import com.dev.rosty.lepka.sample.presentation.screens.login.LoginFragment
 import com.dev.rosty.lepka.sample.presentation.screens.messages.MessagesFragment
 import com.dev.rosty.lepka.sample.presentation.screens.news.NewsFragment
 import com.dev.rosty.lepka.sample.presentation.screens.page.PageFragment
@@ -20,7 +20,7 @@ class AuthorizationModule : LepkaModule() {
 
     override fun getActivityClass() = AuthorizationActivity::class.java
 
-    override fun canOpen(screen: Screen) = screen is AuthorizationScreen
+    override fun canOpen(screen: Screen) = screen is LoginScreen
 }
 
 class HomeModule : LepkaModule() {
@@ -44,7 +44,7 @@ class ChatModule : LepkaModule() {
     override fun canOpen(screen: Screen) = screen is ChatScreen
 }
 
-object AuthorizationScreen : LepkaScreen(AuthorizationFragment::class.java)
+object LoginScreen : LepkaScreen(LoginFragment::class.java)
 
 object NewsScreen : LepkaScreen(NewsFragment::class.java)
 

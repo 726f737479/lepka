@@ -15,5 +15,5 @@ class NewsViewModel : ViewModel(), ScreenComponent.Injectable {
     override fun inject(screenComponent: ScreenComponent)
             = screenComponent.inject(this)
 
-    fun onReadMoreClick(title: String) = lepka.execute(Forward(PageScreen(title, 0)))
+    fun onReadMoreClick(title: String) = lepka.execute(Forward(PageScreen(title, 1)))
 }

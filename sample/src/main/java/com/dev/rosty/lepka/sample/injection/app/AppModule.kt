@@ -29,7 +29,7 @@ class AppModule(val app: SampleApp) {
                 .setApplication(app)
                 .setUseSupport(true)
                 .registerModules(modules)
-                .setEntryScreen(AuthorizationScreen)
+                .setEntryScreen(LoginScreen)
                 .build()
     }
 }
