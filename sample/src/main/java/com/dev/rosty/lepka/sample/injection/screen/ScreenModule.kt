@@ -1,22 +1,25 @@
 package com.dev.rosty.lepka.sample.injection.screen
 
 import android.os.Bundle
-import com.dev.rosty.lepka.lib.Lepka
-import com.dev.rosty.lepka.sample.EXTRA_COUNT
-import com.dev.rosty.lepka.sample.EXTRA_TITLE
+import com.dev.rosty.lepka.sample.*
 import dagger.Module
 import dagger.Provides
 
 
-@Module class ScreenModule(val extras: Bundle) {
+@Module class ScreenModule(private val extras: Bundle) {
 
-    @Provides fun provideScreenDataTitle(): String {
+    @Provides
+    @ScreenKey(ScreenType.CHAT)
+    fun provideScreenChatTitle() = extras.getString(EXTRA_CHAT_TITLE)
 
-        return extras.getString(EXTRA_TITLE)
-    }
+    @Provides
+    @ScreenKey(ScreenType.PAGE)
+    fun provideScreenPageTitle() = extras.getString(EXTRA_PAGE_TITLE)
 
-    @Provides fun provideScreenDataCount(): Number {
+    @Provides
+    @ScreenKey(ScreenType.PAGE)
+    fun provideScreenPageCount(): Number {
 
-        return extras.getInt(EXTRA_COUNT)
+        return extras.getInt(EXTRA_PAGE_COUNT)
     }
 }

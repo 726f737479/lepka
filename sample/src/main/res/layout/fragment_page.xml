@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dev.rosty.lepka.sample.presentation.screens.page.PageViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/click"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/gray_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@android:color/white"
+            android:elevation="2dp">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:padding="16dp"
+                android:src="@drawable/ic_close"
+                android:layout_marginEnd="16dp"
+                android:onClick="@{v -> viewModel.onCloseClick()}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:text="@{viewModel.titleField}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:gravity="center"
+                android:src="@drawable/ic_chevron_left"
+                android:tint="@{viewModel.hasPrevPage ? @color/gray_dark : @color/gray}"
+                android:clickable="@{viewModel.hasPrevPage}"
+                android:onClick="@{v -> viewModel.onPrevClick()}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@{viewModel.countField}"
+                style="@style/TextAppearance.AppCompat.Display4"
+                android:gravity="center"
+                android:padding="24dp"
+                tools:text="1"/>
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:gravity="center"
+                android:src="@drawable/ic_chevron_right"
+                android:tint="@{viewModel.hasNextPage ? @color/gray_dark : @color/gray}"
+                android:clickable="@{viewModel.hasNextPage}"
+                android:onClick="@{v -> viewModel.onNextClick()}"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

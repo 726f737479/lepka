@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".presentation.modules.SplashActivity">
+        <activity android:name=".presentation.modules.AuthorizationActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -19,9 +19,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.modules.ListActivity"/>
+        <activity android:name=".presentation.modules.ChatActivity"/>
 
-        <activity android:name=".presentation.modules.BotBarActivity"/>
+        <activity android:name=".presentation.modules.HomeActivity"/>
 
     </application>
 </manifest>

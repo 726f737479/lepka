@@ -20,16 +20,16 @@ class AppModule(val app: SampleApp) {
 
         val modules = listOf(
 
-                SplashModule(),
-                BotBarModule(),
-                ListModule()
+                AuthorizationModule(),
+                HomeModule(),
+                ChatModule()
         )
 
         return LepkaBuilder()
                 .setApplication(app)
                 .setUseSupport(true)
                 .registerModules(modules)
-                .setEntryScreen(PickerScreen)
+                .setEntryScreen(AuthorizationScreen)
                 .build()
     }
 }

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dev.rosty.lepka.sample.presentation.screens.news.NewsViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/click"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/gray_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:padding="16dp"
+                android:src="@drawable/ic_news"
+                android:tint="@color/gray_dark"
+                android:layout_marginEnd="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:text="@string/title_news"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_rect_round"
+            android:elevation="2dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="24dp"
+            android:paddingStart="24dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/tv_title1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_news_title2"
+                style="@style/TextAppearance.AppCompat.Title"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/text_news_content2"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:maxLines="3"
+                android:ellipsize="end" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_read_more"
+                android:layout_marginTop="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="@color/colorAccent"
+                android:layout_gravity="end"
+                android:onClick="@{v -> viewModel.onReadMoreClick(tvTitle1.text.toString)}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_rect_round"
+            android:elevation="2dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="24dp"
+            android:paddingStart="24dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/tv_title2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_news_title1"
+                style="@style/TextAppearance.AppCompat.Title"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/text_news_content1"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:maxLines="3"
+                android:ellipsize="end" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_read_more"
+                android:layout_marginTop="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="@color/colorAccent"
+                android:layout_gravity="end"
+                android:onClick="@{v -> viewModel.onReadMoreClick(tvTitle2.text.toString)}"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

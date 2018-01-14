@@ -17,8 +17,6 @@ class VmFactory(private val application: Application, private val extras: Bundle
 
     : ViewModelProvider.NewInstanceFactory() {
 
-    constructor(activity: Activity) : this(activity.application, activity.intent.extras)
-
     constructor(fragment: Fragment) : this(fragment.activity.application, fragment.arguments)
 
     override fun <VM : ViewModel> create(modelClass: Class<VM>): VM {
@@ -34,9 +32,6 @@ class VmFactory(private val application: Application, private val extras: Bundle
 
             viewModel.inject(screenComponent)
         }
-
-        if (viewModel is AppComponent.Injectable)
-            viewModel.inject((application as SampleApp).appComponent)
 
         return viewModel
     }

@@ -2,61 +2,69 @@ package com.dev.rosty.lepka.sample
 
 import com.dev.rosty.lepka.lib.Screen
 import com.dev.rosty.lepka.lib.module.LepkaModule
-import com.dev.rosty.lepka.lib.module.Priority
 import com.dev.rosty.lepka.lib.screen.LepkaScreen
-import com.dev.rosty.lepka.sample.presentation.modules.BotBarActivity
-import com.dev.rosty.lepka.sample.presentation.modules.ListActivity
-import com.dev.rosty.lepka.sample.presentation.modules.SplashActivity
-import com.dev.rosty.lepka.sample.presentation.screens.empty.EmptyFragment
-import com.dev.rosty.lepka.sample.presentation.screens.add.AddFragment
-import com.dev.rosty.navi.presentation.screens.purple.ListFragment
-import com.dev.rosty.lepka.sample.presentation.screens.picker.PickerFragment
+import com.dev.rosty.lepka.sample.presentation.modules.HomeActivity
+import com.dev.rosty.lepka.sample.presentation.modules.ChatActivity
+import com.dev.rosty.lepka.sample.presentation.modules.AuthorizationActivity
+import com.dev.rosty.lepka.sample.presentation.screens.chat.ChatFragment
+import com.dev.rosty.lepka.sample.presentation.screens.account.AccountFragment
+import com.dev.rosty.lepka.sample.presentation.screens.authorization.AuthorizationFragment
+import com.dev.rosty.lepka.sample.presentation.screens.messages.MessagesFragment
+import com.dev.rosty.lepka.sample.presentation.screens.news.NewsFragment
+import com.dev.rosty.lepka.sample.presentation.screens.page.PageFragment
 
 
-class SplashModule : LepkaModule() {
-
-    override fun provideContainer() = R.id.container
-
-    override fun getActivityClass() = SplashActivity::class.java
-
-    override fun canOpen(screen: Screen) = screen is PickerScreen
-}
-
-class BotBarModule : LepkaModule() {
+class AuthorizationModule : LepkaModule() {
 
     override fun provideContainer() = R.id.container
 
-    override fun getActivityClass() = BotBarActivity::class.java
+    override fun getActivityClass() = AuthorizationActivity::class.java
 
-    override fun canOpen(screen: Screen) = screen is AddScreen
-
-    override fun getPriority(screen: Screen)
-            = if (screen is AddScreen) Priority.MEDIUM else Priority.HIGH
+    override fun canOpen(screen: Screen) = screen is AuthorizationScreen
 }
 
-class ListModule : LepkaModule() {
+class HomeModule : LepkaModule() {
+
+    override fun provideContainer() = R.id.container
+
+    override fun getActivityClass() = HomeActivity::class.java
+
+    override fun canOpen(screen: Screen) = screen is NewsScreen
+            || screen is PageScreen
+            || screen is MessagesScreen
+            || screen is AccountScreen
+}
+
+class ChatModule : LepkaModule() {
 
     override fun provideContainer()= R.id.container
 
-    override fun getActivityClass() = ListActivity::class.java
+    override fun getActivityClass() = ChatActivity::class.java
 
-    override fun canOpen(screen: Screen)
-            = screen is ListScreen || screen is EmptyScreen
+    override fun canOpen(screen: Screen) = screen is ChatScreen
 }
 
-object ListScreen : LepkaScreen(ListFragment::class.java)
+object AuthorizationScreen : LepkaScreen(AuthorizationFragment::class.java)
 
-object PickerScreen : LepkaScreen(PickerFragment::class.java)
+object NewsScreen : LepkaScreen(NewsFragment::class.java)
 
-class AddScreen(count: Int) : LepkaScreen(AddFragment::class.java) {
+object MessagesScreen : LepkaScreen(MessagesFragment::class.java)
 
-    init { data.putInt(EXTRA_COUNT, count) }
+object AccountScreen : LepkaScreen(AccountFragment::class.java)
+
+class PageScreen(title: String, count: Int) : LepkaScreen(PageFragment::class.java) {
+
+    init {
+        data.putString(EXTRA_PAGE_TITLE, title)
+        data.putInt(EXTRA_PAGE_COUNT, count)
+    }
 }
 
-class EmptyScreen(title: String) : LepkaScreen(EmptyFragment::class.java) {
+class ChatScreen(title: String) : LepkaScreen(ChatFragment::class.java) {
 
-    init { data.putString(EXTRA_TITLE, title) }
+    init { data.putString(EXTRA_CHAT_TITLE, title) }
 }
 
-const val EXTRA_COUNT = "extra_count"
-const val EXTRA_TITLE = "extra_title"
+const val EXTRA_PAGE_COUNT = "page_count"
+const val EXTRA_PAGE_TITLE = "page_tile"
+const val EXTRA_CHAT_TITLE = "chat_title"
