@@ -9,7 +9,7 @@ The principle of the library is built on the fact that the application has modul
 ### Screens definition 
 **Screen** is an abstraction that defines a specific logical part of the application. **Lepka** allows you to send additional data to the **Screens** that can then be extracted. Implementation base on **Fragments API**.
 ```kotlin
-object AuthorizationScreen : LepkaScreen(AuthorizationFragment::class.java)
+object LoginScreen : LepkaScreen(LoginFragment::class.java)
 
 object NewsScreen : LepkaScreen(NewsFragment::class.java)
 
@@ -40,7 +40,7 @@ class AuthorizationModule : LepkaModule() {
 
     override fun getActivityClass() = AuthorizationActivity::class.java
 
-    override fun canOpen(screen: Screen) = screen is AuthorizationScreen
+    override fun canOpen(screen: Screen) = screen is LoginScreen
 }
 
 class HomeModule : LepkaModule() {
