@@ -1,13 +1,13 @@
 <img width=400 src="https://github.com/rostdev/lepka/blob/master/graphics/img_lepka_logo.jpg" />
 
-**Lepka** is a lightweight library that provides super easy interface for navigation within Android app.
+**Lepka** is a lightweight library that provides super easy interface for navigating within an Android app.
 Best used with **MVP** or **MVVM** architecture.
 
 ## Setup 
-The principle of the library is built on the fact that the application has modules that unite the common logic and screens that implement this logic.
+The principle of the library is built on the fact that the application has modules that unite the common logic and screens implementing this logic.
 
 ### Screens definition 
-**Screen** is an abstraction that defines a specific logical part of the application. **Lepka** allows you to send additional data to the **Screens** that can then be extracted. Implementation base on **Fragments API**.
+**Screen** is an abstraction that defines a specific part of the application logic. **Lepka** allows you to send additional data to **Screens** that can then be extracted. Implementation is based on **Fragments API**.
 ```kotlin
 object LoginScreen : LepkaScreen(LoginFragment::class.java)
 
@@ -32,7 +32,7 @@ class ChatScreen(title: String) : LepkaScreen(ChatFragment::class.java) {
 ```
 
 ### Modules definition 
-**Module** is an entity that combines the logical all-encompassing parts of the application, in our case it's **Screens**. Based on the data that **Module**s provide, **Lepka** can decide whether to open a new activity or use current one to display the desired **Screen**.
+**Module** is an entity that combines the logical all-encompassing parts of the application, in our case they are **Screens**. Based on the data that **Module**s provide, **Lepka** can decide whether to open a new activity or use current one to display the desired **Screen**.
 ```kotlin
 class AuthorizationModule : LepkaModule() {
 
@@ -60,8 +60,8 @@ class ChatModule : LepkaModule() {
     override fun canOpen(screen: Screen) = screen is ChatScreen
 }
 ```
-### Screens colision
-Sometimes you may have a situation where several **Modules** can open the same screen, this problem can be resolved by overriding Priority for specific **Screen** in the desired **Module**. Default **Priority** of each screen is `Priority.HIGH`.
+### Screens collision
+Sometimes you may have a situation when several **Modules** can open the same screen, this problem can be resolved by overriding Priority for the specific **Screen** in the desired **Module**. Default **Priority** of each screen is `Priority.HIGH`.
 ```kotlin
 class ChatModule : BaseModule() {
 
@@ -73,7 +73,7 @@ class ChatModule : BaseModule() {
 ```
 
 ### Initialization 
-**Lepka** must be initialized only once and application must have only single instance for it.
+**Lepka** must be initialized only once and application must have only single instance of it.
 ```kotlin
 val modules = Arrays.asList<Module>(
 
@@ -93,25 +93,25 @@ val lepka = LepkaBuilder()
 Switching between screens has never been so easy :)
 
 ### Naviagation
-You just need to tell **Lepka** which command you want to execute, and it does everything itself. Available commands: `Forward(screen), Back(), ForwardPop(screen), BackTo(screen)`
+You just need to tell **Lepka** which command you want to execute, and it does everything else on its own. Available commands: `Forward(screen), Back(), ForwardPop(screen), BackTo(screen)`
 ```kotlin
 lepka.execute(Command)
 ```
 
 #### Forward
-Using this **Command** you can navigates to next **Screen**. If current **Module** can open **Screen**, it will be opened in a same module. Otherwise **Screen** will be opened in module that can do this.
+Using this **Command** you can navigate to next **Screen**. If current **Module** can open **Screen**, **Screen** will be opened in the same module. Otherwise **Screen** will be opened in the module that can do this.
 
 #### Back
-Using this **Command** you can navigates to previous **Screen**. If current **Screen** is last in a backstack of current **Module**, module will be also closed. If current **Module** is last in a backstack of application, application will close.
+Using this **Command** you can navigate to the previous **Screen**. If current **Screen** is the last in a backstack of current **Module**, module will also be closed. If current **Module** is last in a backstack of application, application will be closed.
 
 #### ForwardClear
-Using this **Command** you can navigates to next **Screen** and clear backstack. If **Screen** can be opened in the same module, only current module screens backstack will be clreared. Otherwise all modules backstack will be clreared.
+Using this **Command** you can navigate to the next **Screen** and clear the backstack. If **Screen** can be opened in the same module, only current module's backstack will be cleeared. Otherwise all modules' backstacks will be cleared.
 
 #### BackTo
-Using this **Command** you can navigates back to specified **Screen**. If current **Module** backstack doesn't containes specified **Screen**, current **Module** will be closed and so on until the **Lepka** finds the right screen. If no prev moduled doesn't have this screen in backstack, application will close.  
+Using this **Command** you can navigate back to the specified **Screen**. If current **Module** backstack doesn't containe specified **Screen**, current **Module** will be closed and so on until **Lepka** finds the right screen. If no previous modules contain this screen in the backstack, application will be closed.  
 
 ### Retrieve screen data
-All data that you pass to **Screen** is stored in **Fragment** arguments.
+All data that you pass to a **Screen** is stored in the **Fragment** arguments.
 ```kotlin
 val data = fragment.arguments
 ```
